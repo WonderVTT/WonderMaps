@@ -69,6 +69,13 @@
         <label data-tooltip="{{localize 'WONDERMAPS.Panel.SizesHint'}}">{{localize "WONDERMAPS.Panel.CrossroadSize"}}</label>
         <input type="number" name="crossroadSize" value="{{defaults.crossroadSize}}" min="10" step="2">
       </div>
+      <div class="control-row path-time">
+        <label data-tooltip="{{localize 'WONDERMAPS.Panel.PathTimeHint'}}">{{localize "WONDERMAPS.Panel.PathTime"}}</label>
+        <input type="number" name="pathHours" value="{{pathHours}}" min="0" step="1">
+        <span>{{localize "WONDERMAPS.Panel.HoursShort"}}</span>
+        <input type="number" name="pathMinutes" value="{{pathMinutes}}" min="0" step="5">
+        <span>{{localize "WONDERMAPS.Panel.MinutesShort"}}</span>
+      </div>
     </div>
 
     <div class="reset-buttons">

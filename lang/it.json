@@ -163,6 +163,10 @@
       "AreaRadius": "Raggio aree",
       "CrossroadSize": "Dim. bivi",
       "SizesHint": "Dimensione predefinita delle nuove aree e dei nuovi bivi su questa mappa. Aree e bivi che hanno ancora la vecchia dimensione predefinita seguono il cambio; quelli ridimensionati a mano la mantengono.",
+      "PathTime": "Tempo nuovi sentieri",
+      "PathTimeHint": "Tempo di viaggio con cui parte ogni sentiero che disegni su questa mappa. 0 lascia i nuovi sentieri senza tempo di viaggio. I sentieri già disegnati mantengono il loro.",
+      "HoursShort": "h",
+      "MinutesShort": "m",
       "PlayerColor": "Colore del giocatore (il colore della sua freccia)",
       "AlwaysNorth": "Sa sempre dov'è il nord: la freccia di questo personaggio punta a nord qualunque sia la prova di Sopravvivenza"
     },

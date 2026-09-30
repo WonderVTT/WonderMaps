@@ -217,6 +217,32 @@ export class WonderMapsLayer extends InteractionLayer {
     return { x: Math.round(pv.x + (dx * c) - (dy * s)), y: Math.round(pv.y + (dx * s) + (dy * c)) };
   }
 
+  /**
+   * World-space box around every area and crossroad the current user can see,
+   * or null when there is none (or the map is not drawn yet).
+   * @returns {PIXI.Rectangle|null}
+   */
+  contentBounds() {
+    const map = this.map;
+    if ( !map || !this.visibility ) return null;
+    let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
+    const add = (node, r) => {
+      const p = this.toWorld(node);
+      left = Math.min(left, p.x - r);
+      top = Math.min(top, p.y - r);
+      right = Math.max(right, p.x + r);
+      bottom = Math.max(bottom, p.y + r);
+    };
+    for ( const a of map.areas ) {
+      if ( this.visibility.areas.has(a.id) ) add(a, (Number(a.radius) || AREA_DEFAULTS.radius) + (Number(a.frameWidth) || 0));
+    }
+    for ( const c of map.crossroads ) {
+      if ( this.visibility.crossroads.has(c.id) ) add(c, c.size ?? CROSSROAD_DEFAULTS.size);
+    }
+    if ( left > right ) return null;
+    return new PIXI.Rectangle(left, top, right - left, bottom - top);
+  }
+
   /** Radius used to trim path lines at a node. */
   _nodeRadius(id) {
     const found = findNode(this.map, id);
@@ -1070,7 +1096,7 @@ export class WonderMapsLayer extends InteractionLayer {
    * Create a path between two nodes (areas or crossroads).
    * The path a crossroad was placed on is the right way; any path drawn from or
    * to a crossroad afterwards is a fork, so it starts as a wrong way (the GM can
-   * still flip it from the path's menu).
+   * still flip it from the path's menu). It gets the map's default travel time.
    */
   async _connect(from, to) {
     if ( from === to ) return;
@@ -1079,7 +1105,8 @@ export class WonderMapsLayer extends InteractionLayer {
     if ( exists ) return ui.notifications.info(game.i18n.localize("WONDERMAPS.Notify.PathExists"));
     const isCrossroad = id => map.crossroads.some(c => c.id === id);
     const wrong = isCrossroad(from) || isCrossroad(to);
-    await saveMap(canvas.scene, { edges: [...map.edges, { id: foundry.utils.randomID(), from, to, wrong, time: 0 }] });
+    const edge = { id: foundry.utils.randomID(), from, to, wrong, time: map.defaults.pathTime };
+    await saveMap(canvas.scene, { edges: [...map.edges, edge] });
   }
 
   _openNodeMenu(type, node, client) {

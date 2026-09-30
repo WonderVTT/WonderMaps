@@ -163,6 +163,10 @@
       "AreaRadius": "Area radius",
       "CrossroadSize": "Crossroad size",
       "SizesHint": "Default size of new areas and crossroads on this map. Areas and crossroads that still have the old default size follow the change; the ones you resized keep their size.",
+      "PathTime": "New path time",
+      "PathTimeHint": "Travel time every path you draw on this map starts with. 0 leaves new paths without a travel time. Paths already drawn keep theirs.",
+      "HoursShort": "h",
+      "MinutesShort": "m",
       "PlayerColor": "Player colour (the colour of their arrow)",
       "AlwaysNorth": "Always knows north: this character's arrow points north whatever their Survival check"
     },

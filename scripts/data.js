@@ -14,7 +14,7 @@ import { Settings } from "./settings.js";
  *   visited     Ids of the areas the party has already visited.
  *   checks      [{userId, survival, intelligence, arrow}] from the last activation.
  *   transition  Counter bumped every time the map must black out and rotate.
- *   defaults    {areaRadius, crossroadSize} used for new areas and crossroads on this map.
+ *   defaults    {areaRadius, crossroadSize, pathTime} used for new areas, crossroads and paths on this map.
  * Area and crossroad coordinates are always in unrotated map space.
  */
 
@@ -41,7 +41,9 @@ export function getMap(scene) {
     transition: Number(f.transition) || 0,
     defaults: {
       areaRadius: Number(f.defaults?.areaRadius) || AREA_DEFAULTS.radius,
-      crossroadSize: Number(f.defaults?.crossroadSize) || CROSSROAD_DEFAULTS.size
+      crossroadSize: Number(f.defaults?.crossroadSize) || CROSSROAD_DEFAULTS.size,
+      // Travel time (minutes) of a newly drawn path; 0 leaves it unset.
+      pathTime: Math.max(0, Math.round(Number(f.defaults?.pathTime) || 0))
     }
   };
 }

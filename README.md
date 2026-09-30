@@ -19,6 +19,7 @@ A gridless exploration scene type for Foundry VTT v12. The map is made of circul
 - **Reset rotation** turns the map back to north up (with the blackout). Players' arrows keep their angle from north, so correct ones stay correct.
 - **Reset everything** clears the journey on this map (active area, visited areas, arrows, rotation) and resets the Survival DC, the turns, the last results, the time in the area and the travel counters. The party members are kept.
 - **Area radius / Crossroad size**: default sizes on this map. New areas and crossroads use them; existing ones that still have the old default follow the change, resized ones keep their size.
+- **New path time**: hours and minutes every path you draw on this map starts with (0 = no travel time, as before). Paths already drawn keep theirs.
 - Click the chevron to collapse the panel.
 
 ## GM tools (compass icon in the scene controls)

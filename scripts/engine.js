@@ -435,6 +435,15 @@ export async function setDefaultSizes(scene, { areaRadius, crossroadSize }) {
   return saveMap(scene, changes);
 }
 
+/** Change the travel time (minutes) newly drawn paths get on a map. Existing paths keep theirs. */
+export async function setDefaultPathTime(scene, minutes) {
+  if ( !game.user.isGM || !scene || !Number.isFinite(minutes) ) return;
+  const map = getMap(scene);
+  const pathTime = Math.max(0, Math.round(minutes));
+  if ( pathTime === map.defaults.pathTime ) return;
+  return saveMap(scene, { defaults: { ...map.defaults, pathTime } });
+}
+
 /** Forget the journey: no active area, nothing visited, north up. */
 export async function resetJourney(scene) {
   if ( !game.user.isGM ) return;

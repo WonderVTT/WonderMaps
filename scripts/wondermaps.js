@@ -55,8 +55,10 @@ const WONDERMAP_MIN_ZOOM = 0.05;
 
 /**
  * On WonderMap scenes, let the view zoom out past the "whole scene fits the
- * window" limit and pan further out, since the rotated map can reach beyond
- * the scene rectangle. Other scenes keep core behaviour.
+ * window" limit, and let it pan anywhere around what is on the map instead of
+ * the scene rectangle: the bounds follow the areas and crossroads the user can
+ * see, so they grow as the GM places things further out and follow the map
+ * when it rotates. Other scenes keep core behaviour.
  */
 function unlockZoom() {
   const original = Canvas.prototype._constrainView;
@@ -66,13 +68,15 @@ function unlockZoom() {
     if ( !Number.isNumeric(x) ) x = this.stage.pivot.x;
     if ( !Number.isNumeric(y) ) y = this.stage.pivot.y;
     if ( !Number.isNumeric(scale) ) scale = this.stage.scale.x;
-    const d = this.dimensions;
     scale = Math.clamp(scale, WONDERMAP_MIN_ZOOM, CONFIG.Canvas.maxZoom);
-    // Allow panning a full screen past every edge of the canvas.
+    // An empty map falls back to the scene rectangle.
+    const d = this.dimensions;
+    const bounds = layer()?.contentBounds() ?? new PIXI.Rectangle(d.sceneX, d.sceneY, d.sceneWidth, d.sceneHeight);
+    // Allow panning a full screen past every edge of the content.
     const padX = window.innerWidth / scale;
     const padY = window.innerHeight / scale;
-    x = Math.clamp(x, -padX, d.width + padX);
-    y = Math.clamp(y, -padY, d.height + padY);
+    x = Math.clamp(x, bounds.left - padX, bounds.right + padX);
+    y = Math.clamp(y, bounds.top - padY, bounds.bottom + padY);
     return { x, y, scale };
   };
 }

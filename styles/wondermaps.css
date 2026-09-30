@@ -325,6 +325,9 @@
 #wondermaps-party .control-row.sizes {
   grid-template-columns: 1fr 52px 1fr 52px;
 }
+#wondermaps-party .control-row.path-time {
+  grid-template-columns: 1fr 52px auto 52px auto;
+}
 
 /* Player colour bars (party panel and travel box) */
 .wondermaps-party .colors,

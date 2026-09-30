@@ -1,7 +1,7 @@
 import { MODULE_ID } from "./constants.js";
 import { Settings } from "./settings.js";
 import { isWonderMap, partyMembers, getMap, playersOf } from "./data.js";
-import { resetRotation, resetAll, setDefaultSizes, toggleAlwaysNorth } from "./engine.js";
+import { resetRotation, resetAll, setDefaultSizes, setDefaultPathTime, toggleAlwaysNorth } from "./engine.js";
 
 const TEMPLATE = `modules/${MODULE_ID}/templates/party-panel.hbs`;
 
@@ -62,13 +62,16 @@ export class PartyPanel {
       intelligence: describe(results[actor.id]?.intelligence, game.i18n.localize("WONDERMAPS.Chat.Intelligence"))
     }));
     const base = Settings.get("baseSurvivalDC");
+    const defaults = getMap(canvas.scene).defaults;
     return {
       members,
       collapsed: Settings.get("panelCollapsed"),
       survivalDC: Settings.get("survivalDC"),
       intelligenceDC: Settings.get("intelligenceDC"),
       turns: Settings.get("turns") ?? 0,
-      defaults: getMap(canvas.scene).defaults,
+      defaults,
+      pathHours: Math.floor(defaults.pathTime / 60),
+      pathMinutes: defaults.pathTime % 60,
       survivalResetTooltip: game.i18n.format("WONDERMAPS.DC.Reset", { base })
     };
   }
@@ -165,6 +168,11 @@ export class PartyPanel {
     // Default sizes belong to the current map, the rest are world settings.
     if ( (name === "areaRadius") || (name === "crossroadSize") ) {
       await setDefaultSizes(canvas.scene, { [name]: value });
+      return this.render();
+    }
+    if ( (name === "pathHours") || (name === "pathMinutes") ) {
+      const field = n => Math.max(0, Number(this.element?.querySelector(`input[name="${n}"]`)?.value) || 0);
+      await setDefaultPathTime(canvas.scene, (field("pathHours") * 60) + field("pathMinutes"));
       return this.render();
     }
     return Settings.set(name, value);
