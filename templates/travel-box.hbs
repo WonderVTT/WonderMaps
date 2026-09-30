@@ -1,0 +1,39 @@
+<section id="wondermaps-travel" class="wondermaps-travel">
+  <div class="area-time" data-tooltip="{{localize 'WONDERMAPS.Travel.AreaTimeHint'}}">
+    <i class="fas fa-hourglass-half"></i>
+    <span class="label">{{localize "WONDERMAPS.Travel.AreaTime"}}</span>
+    <strong>{{areaTime}}</strong>
+    {{#if isGM}}
+    <span class="time-buttons">
+      <a data-action="add-hour" data-tooltip="{{localize 'WONDERMAPS.Travel.AddHour'}}"><i class="fas fa-plus"></i></a>
+      <a data-action="add-rest" data-tooltip="{{localize 'WONDERMAPS.Travel.AddRestTime'}}"><i class="fas fa-moon"></i></a>
+      <a data-action="add-custom" data-tooltip="{{localize 'WONDERMAPS.Travel.AddCustom'}}"><i class="fas fa-hourglass-half"></i></a>
+    </span>
+    {{/if}}
+  </div>
+
+  {{#if members.length}}
+  <div class="travel-head">{{localize "WONDERMAPS.Travel.SinceRest"}}</div>
+  <ol class="travellers">
+    {{#each members}}
+    <li class="traveller" data-actor-id="{{id}}">
+      <span class="colors">{{#each colors}}<span style="background: {{this}}"></span>{{/each}}</span>
+      <span class="name">{{name}}</span>
+      {{#if ../isGM}}{{#if exhaustion}}<span class="exhaustion" data-tooltip="{{localize 'WONDERMAPS.Travel.ExhaustionLevel'}}"><i class="fas fa-face-tired"></i> {{exhaustion}}</span>{{/if}}{{/if}}
+      <strong class="travel{{#if tired}} tired{{/if}}">{{travel}}</strong>
+      {{#if ../isGM}}
+      <a data-action="rest" data-tooltip="{{localize 'WONDERMAPS.Travel.Rest'}}"><i class="fas fa-bed"></i></a>
+      <a data-action="exhaust" data-tooltip="{{localize 'WONDERMAPS.Travel.Exhaust'}}"><i class="fas fa-face-tired"></i></a>
+      {{/if}}
+    </li>
+    {{/each}}
+  </ol>
+  {{/if}}
+
+  {{#if isGM}}{{#if members.length}}
+  <div class="all-buttons">
+    <button type="button" data-action="rest-all"><i class="fas fa-bed"></i> {{localize "WONDERMAPS.Travel.RestAll"}}</button>
+    <button type="button" data-action="exhaust-all"><i class="fas fa-face-tired"></i> {{localize "WONDERMAPS.Travel.ExhaustAll"}}</button>
+  </div>
+  {{/if}}{{/if}}
+</section>

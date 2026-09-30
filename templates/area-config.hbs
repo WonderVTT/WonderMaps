@@ -1,0 +1,113 @@
+<form class="wondermaps-area-config" autocomplete="off">
+  <div class="form-group">
+    <label>{{localize "WONDERMAPS.Fields.Name"}}</label>
+    <div class="form-fields">
+      <input type="text" name="name" value="{{area.name}}">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "WONDERMAPS.Fields.Image"}}</label>
+    <div class="form-fields">
+      <file-picker name="img" type="imagevideo" value="{{area.img}}"></file-picker>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "WONDERMAPS.Fields.Landmark"}}</label>
+    <div class="form-fields">
+      <input type="checkbox" name="landmark" {{checked area.landmark}}>
+    </div>
+    <p class="hint">{{localize "WONDERMAPS.Fields.LandmarkHint"}}</p>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "WONDERMAPS.Fields.Hidden"}}</label>
+    <div class="form-fields">
+      <input type="checkbox" name="hidden" {{checked area.hidden}}>
+    </div>
+    <p class="hint">{{localize "WONDERMAPS.Fields.HiddenHint"}}</p>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "WONDERMAPS.Fields.Radius"}}</label>
+    <div class="form-fields">
+      <input type="number" name="radius" value="{{area.radius}}" min="20" step="1" data-dtype="Number">
+    </div>
+  </div>
+
+  <fieldset>
+    <legend>{{localize "WONDERMAPS.Fields.Frame"}}</legend>
+    <div class="form-group">
+      <label>{{localize "WONDERMAPS.Fields.FrameColor"}}</label>
+      <div class="form-fields">
+        <color-picker name="frameColor" value="{{area.frameColor}}"></color-picker>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>{{localize "WONDERMAPS.Fields.FrameWidth"}}</label>
+      <div class="form-fields">
+        <input type="number" name="frameWidth" value="{{area.frameWidth}}" min="0" step="1" data-dtype="Number">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>{{localize "WONDERMAPS.Fields.FrameImage"}}</label>
+      <div class="form-fields">
+        <file-picker name="frameImg" type="image" value="{{area.frameImg}}"></file-picker>
+      </div>
+      <p class="hint">{{localize "WONDERMAPS.Fields.FrameImageHint"}}</p>
+    </div>
+  </fieldset>
+
+  <div class="form-group">
+    <label>{{localize "WONDERMAPS.Fields.RollTable"}}</label>
+    <div class="form-fields">
+      <select name="table">
+        {{selectOptions tables selected=area.table blank=(localize "WONDERMAPS.Fields.NoTable")}}
+      </select>
+    </div>
+    <p class="hint">{{localize "WONDERMAPS.Fields.RollTableHint"}}</p>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "WONDERMAPS.Fields.LinkedScene"}}</label>
+    <div class="form-fields">
+      <select name="scene">
+        {{selectOptions scenes selected=area.scene blank=(localize "WONDERMAPS.Fields.NoScene")}}
+      </select>
+    </div>
+    <p class="hint">{{localize "WONDERMAPS.Fields.LinkedSceneHint"}}</p>
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize "WONDERMAPS.Fields.Notes"}}</label>
+    <textarea name="notes" rows="3">{{area.notes}}</textarea>
+  </div>
+
+  <fieldset class="tracks">
+    <legend>{{localize "WONDERMAPS.Fields.Tracks"}}</legend>
+    <p class="hint">{{localize "WONDERMAPS.Fields.TracksHint"}}</p>
+    {{#each area.tracks as |track i|}}
+    <div class="track" data-index="{{i}}">
+      <img class="track-icon" src="{{track.img}}" alt="">
+      <div class="track-fields">
+        <input type="hidden" name="tracks.{{i}}.id" value="{{track.id}}">
+        <div class="track-line">
+          <input type="text" name="tracks.{{i}}.name" value="{{track.name}}" placeholder="{{localize 'WONDERMAPS.Fields.TrackName'}}">
+          <label>{{localize "WONDERMAPS.Fields.DC"}}</label>
+          <input class="dc" type="number" name="tracks.{{i}}.dc" value="{{track.dc}}" step="1" data-dtype="Number">
+          <a class="track-copy" data-index="{{i}}" data-tooltip="{{localize 'WONDERMAPS.CopyTrack.Title'}}"><i class="fas fa-clone"></i></a>
+          <a class="track-delete" data-index="{{i}}" data-tooltip="{{localize 'WONDERMAPS.Menu.Delete'}}"><i class="fas fa-trash"></i></a>
+        </div>
+        <file-picker name="tracks.{{i}}.img" type="image" value="{{track.img}}" placeholder="{{localize 'WONDERMAPS.Fields.TrackIcon'}}"></file-picker>
+        <input type="text" name="tracks.{{i}}.formula" value="{{track.formula}}" placeholder="{{localize 'WONDERMAPS.Fields.Formula'}}: {{@root.survivalFormula}}">
+      </div>
+    </div>
+    {{/each}}
+    <button type="button" class="track-add"><i class="fas fa-plus"></i> {{localize "WONDERMAPS.Menu.AddTrack"}}</button>
+  </fieldset>
+
+  <footer class="sheet-footer flexrow">
+    <button type="submit"><i class="fas fa-save"></i> {{localize "WONDERMAPS.Save"}}</button>
+  </footer>
+</form>

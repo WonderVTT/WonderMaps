@@ -1,0 +1,477 @@
+/* Blackout used while the map rotates. Sits right above the canvas, below the UI. */
+#wondermaps-blackout {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: calc(var(--z-index-canvas, 0) + 1);
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+#wondermaps-blackout.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Canvas context menu */
+.wondermaps-menu {
+  position: fixed;
+  z-index: calc(var(--z-index-app, 30) + 100);
+  min-width: 190px;
+  background: rgba(20, 18, 16, 0.95);
+  border: 1px solid var(--color-border-highlight, #ff6400);
+  border-radius: 5px;
+  box-shadow: 0 0 10px #000;
+  color: var(--color-text-light-highlight, #f0f0e0);
+  font-size: var(--font-size-14, 14px);
+}
+.wondermaps-menu h4 {
+  margin: 0;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--color-border-dark-tertiary, #555);
+  font-family: var(--font-primary);
+  font-weight: bold;
+  white-space: nowrap;
+}
+.wondermaps-menu ol {
+  list-style: none;
+  margin: 0;
+  padding: 2px 0;
+}
+.wondermaps-menu li {
+  padding: 4px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.wondermaps-menu li i {
+  width: 18px;
+  text-align: center;
+  margin-right: 4px;
+}
+.wondermaps-menu li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 6px var(--color-shadow-primary, #ff0000);
+}
+
+/* Area config */
+.wondermaps.sheet form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.wondermaps .hint {
+  flex: 0 0 100%;
+  margin: 2px 0 0;
+  font-size: var(--font-size-12, 12px);
+  color: var(--color-text-dark-secondary, #4b4a44);
+}
+.wondermaps .track {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--color-border-light-tertiary, #b5b3a4);
+}
+.wondermaps .track-icon {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border: 1px solid var(--color-border-dark-tertiary, #555);
+  border-radius: 50%;
+  background: #7a3e9d;
+}
+.wondermaps .track-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.wondermaps .track-line {
+  display: grid;
+  grid-template-columns: 1fr auto 56px 20px 20px;
+  gap: 4px;
+  align-items: center;
+}
+.wondermaps .track-line a {
+  text-align: center;
+}
+.wondermaps .track-add {
+  margin-top: 4px;
+}
+
+/* Chat summary */
+.wondermaps-chat h3 {
+  margin: 0 0 4px;
+}
+.wondermaps-chat table {
+  margin: 0;
+  text-align: center;
+}
+.wondermaps-chat th {
+  font-size: var(--font-size-12, 12px);
+}
+.wondermaps-chat td.who {
+  text-align: left;
+}
+.wondermaps-chat td.success {
+  color: #1c7a2b;
+}
+.wondermaps-chat td.failure {
+  color: #a02020;
+}
+.wondermaps-chat .note {
+  margin: 4px 0 0;
+  font-size: var(--font-size-12, 12px);
+  font-style: italic;
+}
+
+/* Scene directory button */
+#scenes .header-actions .wondermaps-create {
+  flex: 0 0 100%;
+}
+
+/* GM party panel (top right, next to the sidebar) */
+#wondermaps-party {
+  position: fixed;
+  top: 8px;
+  right: 316px;
+  width: 330px;
+  z-index: var(--z-index-ui, 60);
+  background: rgba(20, 18, 16, 0.9);
+  border: 1px solid var(--color-border-dark-tertiary, #555);
+  border-radius: 6px;
+  box-shadow: 0 0 10px #000;
+  color: var(--color-text-light-highlight, #f0f0e0);
+  font-size: var(--font-size-13, 13px);
+  pointer-events: all;
+}
+#wondermaps-party.drag-over {
+  border-color: var(--color-border-highlight, #ff6400);
+  box-shadow: 0 0 12px var(--color-shadow-primary, #ff6400);
+}
+#wondermaps-party .panel-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--color-border-dark-tertiary, #555);
+}
+#wondermaps-party.collapsed .panel-header {
+  border-bottom: none;
+}
+#wondermaps-party.collapsed .panel-body {
+  display: none;
+}
+#wondermaps-party h3 {
+  flex: 1;
+  margin: 0;
+  border: none;
+  font-size: var(--font-size-14, 14px);
+  color: inherit;
+}
+#wondermaps-party .turns-badge {
+  padding: 0 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+#wondermaps-party a {
+  color: inherit;
+  cursor: pointer;
+}
+#wondermaps-party a:hover {
+  text-shadow: 0 0 6px var(--color-shadow-primary, #ff0000);
+}
+#wondermaps-party .members {
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+#wondermaps-party .member {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 4px;
+  border-radius: 4px;
+}
+#wondermaps-party .member:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+#wondermaps-party .member img {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  object-fit: cover;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+#wondermaps-party .member .who {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+#wondermaps-party .member .who span,
+#wondermaps-party .member .who small {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#wondermaps-party .member .who small {
+  color: var(--color-text-light-6, #999);
+  font-size: var(--font-size-11, 11px);
+}
+#wondermaps-party .result {
+  flex: 0 0 52px;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 4px;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.08);
+  color: #aaa;
+}
+#wondermaps-party .result.success {
+  background: #2e6b34;
+  color: #fff;
+}
+#wondermaps-party .result.failure {
+  background: #8a2222;
+  color: #fff;
+}
+#wondermaps-party .member .remove {
+  flex: 0 0 16px;
+  text-align: center;
+}
+#wondermaps-party .empty {
+  padding: 6px;
+  font-style: italic;
+  color: var(--color-text-light-6, #aaa);
+  border: 1px dashed #666;
+  border-radius: 4px;
+}
+#wondermaps-party .controls {
+  padding: 4px 8px 6px;
+  border-top: 1px solid var(--color-border-dark-tertiary, #555);
+}
+#wondermaps-party .control-row {
+  display: grid;
+  grid-template-columns: 1fr 16px 56px 16px 16px;
+  align-items: center;
+  gap: 6px;
+  margin: 3px 0;
+  text-align: center;
+}
+#wondermaps-party .control-row label {
+  text-align: left;
+}
+#wondermaps-party .control-row input {
+  height: 22px;
+  text-align: center;
+  color: var(--color-text-light-highlight, #f0f0e0);
+  background: rgba(0, 0, 0, 0.4);
+  border-color: #666;
+}
+#wondermaps-party .control-row .value {
+  font-weight: bold;
+}
+#wondermaps-party .reset-buttons {
+  display: flex;
+  gap: 6px;
+  padding: 0 8px 8px;
+}
+#wondermaps-party .reset-buttons button {
+  flex: 1;
+  height: 26px;
+  line-height: 22px;
+  font-size: var(--font-size-12, 12px);
+  color: var(--color-text-light-highlight, #f0f0e0);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #666;
+}
+#wondermaps-party .reset-buttons button:hover {
+  box-shadow: 0 0 6px var(--color-shadow-primary, #ff6400);
+}
+#wondermaps-party .reset-buttons button.danger {
+  border-color: #8a2222;
+}
+
+/* Route picker */
+.wondermaps-routes .route {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+/* Roll table result card */
+.wondermaps-table ul {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+}
+.wondermaps-table li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.wondermaps-table li img {
+  width: 32px;
+  height: 32px;
+  border: none;
+}
+#wondermaps-party .control-row.sizes {
+  grid-template-columns: 1fr 52px 1fr 52px;
+}
+
+/* Player colour bars (party panel and travel box) */
+.wondermaps-party .colors,
+.wondermaps-travel .colors {
+  flex: 0 0 5px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+}
+.wondermaps-party .colors span,
+.wondermaps-travel .colors span {
+  flex: 1;
+}
+#wondermaps-party .member .north {
+  flex: 0 0 18px;
+  text-align: center;
+  color: #777;
+}
+#wondermaps-party .member .north.active {
+  color: #ffd166;
+  text-shadow: 0 0 6px #ffd166;
+}
+
+/* Travel box (bottom right, everybody) */
+#wondermaps-travel {
+  position: fixed;
+  bottom: 8px;
+  right: 316px;
+  min-width: 280px;
+  max-width: 340px;
+  z-index: var(--z-index-ui, 60);
+  padding: 6px 8px;
+  background: rgba(20, 18, 16, 0.9);
+  border: 1px solid var(--color-border-dark-tertiary, #555);
+  border-radius: 6px;
+  box-shadow: 0 0 10px #000;
+  color: var(--color-text-light-highlight, #f0f0e0);
+  font-size: var(--font-size-13, 13px);
+  pointer-events: all;
+}
+#wondermaps-travel .area-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#wondermaps-travel .area-time .label {
+  flex: 1;
+}
+#wondermaps-travel .travel-head {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid var(--color-border-dark-tertiary, #555);
+  font-size: var(--font-size-11, 11px);
+  color: #aaa;
+}
+#wondermaps-travel .travellers {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0;
+}
+#wondermaps-travel .traveller {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+#wondermaps-travel .traveller .name {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#wondermaps-travel .traveller .travel.tired {
+  color: #ff5252;
+}
+#wondermaps-travel .traveller .exhaustion {
+  color: #e0a040;
+  font-size: var(--font-size-11, 11px);
+}
+#wondermaps-travel a {
+  color: inherit;
+  cursor: pointer;
+}
+#wondermaps-travel a:hover {
+  text-shadow: 0 0 6px var(--color-shadow-primary, #ff0000);
+}
+#wondermaps-travel .all-buttons {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+#wondermaps-travel .all-buttons button {
+  flex: 1;
+  white-space: nowrap;
+  height: 24px;
+  line-height: 20px;
+  font-size: var(--font-size-12, 12px);
+  color: var(--color-text-light-highlight, #f0f0e0);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #666;
+}
+
+/* Compass in front of WonderMap scene names */
+.wondermaps-scene-icon {
+  margin-right: 4px;
+  color: #ffd166;
+}
+
+/* Copy track dialog */
+.wondermaps-copy-track table {
+  margin: 4px 0;
+}
+.wondermaps-copy-track td,
+.wondermaps-copy-track th {
+  text-align: left;
+}
+.wondermaps-copy-track td:first-child,
+.wondermaps-copy-track th:first-child {
+  width: 28px;
+}
+.wondermaps-copy-track input[type=number] {
+  width: 60px;
+}
+
+/* SnapScene snapshot picker */
+.wondermaps-snapshots .snapshot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 3px 0;
+}
+.wondermaps-snapshots .snapshot .name {
+  flex: 1;
+}
+.wondermaps-snapshots .snapshot .date {
+  font-size: var(--font-size-11, 11px);
+  color: var(--color-text-dark-secondary, #4b4a44);
+}
+.wondermaps-routes .wrong-way {
+  color: #e64a19;
+}
+#wondermaps-travel .time-buttons {
+  display: flex;
+  gap: 6px;
+  margin-left: 4px;
+}

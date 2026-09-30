@@ -1,0 +1,214 @@
+{
+  "WONDERMAPS": {
+    "Area": "Area",
+    "Crossroad": "Bivio",
+    "Path": "Sentiero",
+    "Hidden": "nascosto",
+    "Track": "Traccia",
+    "Save": "Salva",
+    "NewArea": "Area {n}",
+    "NewScene": "Nuova WonderMap",
+    "CreateScene": "Crea WonderMap",
+    "AreaConfig": "Area",
+    "CrossroadConfig": "Bivio",
+    "Settings": {
+      "baseSurvivalDC": {
+        "Name": "CD Sopravvivenza iniziale",
+        "Hint": "La CD di Sopravvivenza da cui parte il viaggio, e il valore a cui torna quando il GM la azzera."
+      },
+      "survivalDC": {
+        "Name": "CD Sopravvivenza attuale",
+        "Hint": "La CD di Sopravvivenza corrente. Aumenta di uno a ogni attivazione di un'area."
+      },
+      "intelligenceDC": {
+        "Name": "CD Intelligenza",
+        "Hint": "CD della prova di Intelligenza che permette a un giocatore di ricordare le aree già visitate vicine a quella attiva."
+      },
+      "survivalFormula": {
+        "Name": "Formula prova di Sopravvivenza",
+        "Hint": "Formula per le prove di Sopravvivenza, calcolata con i dati di ogni personaggio. I valori mancanti valgono 0. Il predefinito è per D&D 5e."
+      },
+      "intelligenceFormula": {
+        "Name": "Formula prova di Intelligenza",
+        "Hint": "Formula per le prove di Intelligenza, calcolata con i dati di ogni personaggio. I valori mancanti valgono 0. Il predefinito è per D&D 5e."
+      },
+      "randomRotation": {
+        "Name": "Ruota la mappa",
+        "Hint": "Quando un'area viene attivata, ruota tutta la mappa attorno a essa di un angolo casuale."
+      },
+      "blackoutDuration": {
+        "Name": "Dissolvenza al nero (ms)",
+        "Hint": "Durata della dissolvenza da e verso il nero quando cambia l'area attiva."
+      }
+    },
+    "SceneConfig": {
+      "Enable": "Scena WonderMap",
+      "EnableHint": "Trasforma questa scena in una WonderMap: niente griglia, niente visione dei token, aree collegate da sentieri. L'immagine di sfondo riempie tutto lo schermo come fondale fisso."
+    },
+    "Controls": {
+      "Title": "WonderMaps",
+      "Select": "Seleziona: clic sinistro su un'area per vederne l'immagine intera, clic destro per il suo menu (cammina fin qui, modifica...). Clic su un bivio per tirare la sua prova di Sopravvivenza. Trascina per spostare.",
+      "Area": "Aggiungi area: clic sulla mappa",
+      "Crossroad": "Aggiungi bivio: clicca su un sentiero per dividerlo con un bivio",
+      "Connect": "Collega: trascina da un'area o un bivio e rilascia su un altro per tracciare un sentiero",
+      "SurvivalDC": "CD Sopravvivenza (attuale: {dc})",
+      "Reset": "Azzera il viaggio",
+      "ResetConfirm": "Cancellare l'area attiva, le aree visitate e le frecce dei giocatori su questa mappa? La CD di Sopravvivenza non cambia."
+    },
+    "Menu": {
+      "WalkHere": "Cammina fin qui",
+      "SetActive": "Rendi attiva (senza prove né rotazione)",
+      "EditArea": "Modifica area",
+      "AddTrack": "Aggiungi traccia",
+      "MarkVisited": "Segna come visitata",
+      "MarkUnvisited": "Segna come non visitata",
+      "Delete": "Elimina",
+      "RollCrossroad": "Tira Sopravvivenza (alla cieca)",
+      "EditCrossroad": "Modifica bivio",
+      "MarkWrong": "Segna come direzione sbagliata",
+      "MarkRight": "Segna come direzione giusta",
+      "RollTrack": "Tira per trovare la traccia (alla cieca)",
+      "WalkHereDifficult": "Cammina fin qui (terreno difficile)",
+      "TravelTime": "Imposta tempo di viaggio",
+      "CopyTrack": "Copia in altre aree",
+      "Hide": "Nascondi ai giocatori",
+      "Reveal": "Rivela ai giocatori"
+    },
+    "Fields": {
+      "Name": "Nome",
+      "Image": "Immagine",
+      "Radius": "Raggio (px)",
+      "Frame": "Cornice",
+      "FrameColor": "Colore cornice",
+      "FrameWidth": "Spessore cornice (px)",
+      "FrameImage": "Immagine cornice",
+      "FrameImageHint": "Facoltativa. Un'immagine ad anello disegnata sopra il cerchio al posto della cornice colorata.",
+      "RollTable": "Tabella casuale",
+      "RollTableHint": "Tirata alla cieca ogni volta che il gruppo entra in quest'area. Solo il GM vede il risultato.",
+      "NoTable": "Nessuna",
+      "Notes": "Note del GM",
+      "Tracks": "Tracce",
+      "TracksHint": "Risorse o indizi nascosti in quest'area. Solo il GM li vede, come piccoli cerchi in alto a destra dell'area. Cliccane uno sulla mappa per far tirare al gruppo la prova per trovarlo.",
+      "TrackName": "Nome",
+      "DC": "CD",
+      "Formula": "Formula prova (vuoto = Sopravvivenza)",
+      "SurvivalDC": "CD Sopravvivenza",
+      "Size": "Dimensione (px)",
+      "Hours": "Ore",
+      "Minutes": "Minuti",
+      "TravelTimeHint": "Quanto tempo serve per percorrere questo sentiero. Camminando verso un'area si sommano i sentieri del percorso e il tempo del mondo avanza (raddoppiato su terreno difficile).",
+      "Landmark": "Sempre visibile dalle aree vicine",
+      "LandmarkHint": "I giocatori vedono quest'area (a colori) ogni volta che il gruppo si trova in un'area collegata a essa da un sentiero, indipendentemente dalle prove. Il GM vede un occhio in basso a sinistra.",
+      "Hidden": "Nascosta ai giocatori",
+      "HiddenHint": "I giocatori non vedono mai quest'area come vicina ricordata o sempre visibile, finché non la riveli (anche dal menu del tasto destro). La vedono comunque mentre il gruppo si trova lì. Il GM la vede sbiadita.",
+      "TrackIcon": "Icona",
+      "LinkedScene": "Scena collegata",
+      "NoScene": "Nessuna",
+      "LinkedSceneHint": "Il GM ha una scorciatoia su quest'area (bersaglio rosso, in alto a sinistra) che attiva questa scena per tutti. Con SnapScene attivo puoi prima scegliere un'istantanea da ripristinare."
+    },
+    "DC": {
+      "Title": "CD Sopravvivenza",
+      "Current": "CD attuale",
+      "Hint": "La CD aumenta di uno a ogni attivazione di un'area e resta tra una scena e l'altra. Azzera la riporta a {base} (il valore iniziale si cambia nelle impostazioni del modulo).",
+      "Save": "Salva",
+      "Reset": "Azzera a {base}"
+    },
+    "Chat": {
+      "Arrived": "Arrivo a {name}",
+      "Crossroad": "Bivio: {name}",
+      "Track": "Traccia: {name} ({area})",
+      "Survival": "Sopravvivenza",
+      "Intelligence": "Intelligenza",
+      "Find": "Trovare",
+      "DC": "CD",
+      "NoParty": "Il gruppo è vuoto: trascina degli attori nel pannello Gruppo di WonderMaps.",
+      "NextDC": "Prossima CD Sopravvivenza: {dc}",
+      "NoRoute": "Nessun sentiero porta qui: non è passato tempo.",
+      "Branch": "Diramazione {n}",
+      "TravelTime": "Tempo di viaggio: {time}",
+      "Difficult": "terreno difficile (×2)",
+      "Rolled": "Tirato",
+      "NoResult": "Nessun risultato."
+    },
+    "Notify": {
+      "PathExists": "Questi due punti sono già collegati.",
+      "CrossroadOnPath": "I bivi vanno sui sentieri: clicca su un sentiero per posizionarne uno.",
+      "PathEnds": "Un sentiero deve finire su un'area o su un bivio: rilascia il mouse sopra uno di essi.",
+      "CascadeConfirm": "Verranno eliminati {paths} sentiero/i e {crossroads} bivio/i collegati. Le aree restano. Continuare?"
+    },
+    "Errors": {
+      "BadFormula": "WonderMaps: formula non valida \"{formula}\". Tirato un d20 semplice.",
+      "NoTable": "WonderMaps: tabella {uuid} non trovata.",
+      "NoExhaustion": "WonderMaps: {name} non ha un valore di indebolimento (system.attributes.exhaustion) in questo sistema di gioco."
+    },
+    "Panel": {
+      "Title": "Gruppo",
+      "Toggle": "Mostra / nascondi",
+      "Turns": "Turni (cambi di area)",
+      "Remove": "Rimuovi dal gruppo",
+      "RemoveConfirm": "Rimuovere <strong>{name}</strong> dal gruppo? Non verranno più tirate prove per questo personaggio.",
+      "Empty": "Trascina qui degli attori (o una cartella di attori) dalla scheda Attori. Le prove vengono tirate solo per gli attori in questa lista.",
+      "SurvivalDC": "CD Sopravvivenza",
+      "IntelligenceDC": "CD INT",
+      "ResetTurns": "Azzera i turni",
+      "ResetTurnsConfirm": "Riportare il contatore dei turni a 0?",
+      "NoRoll": "non ancora tirata",
+      "Passed": "superata",
+      "Failed": "fallita",
+      "OnlyActors": "WonderMaps: solo gli attori del mondo possono entrare nel gruppo.",
+      "ResetRotation": "Azzera rotazione",
+      "ResetRotationConfirm": "Riportare la mappa con il nord in alto? Lo schermo si oscura come al solito. Le frecce dei giocatori mantengono il loro angolo rispetto al nord.",
+      "ResetAll": "Azzera tutto",
+      "ResetAllConfirm": "Azzerare tutto su questa mappa?<br>• area attiva, aree visitate e frecce dei giocatori cancellate<br>• rotazione riportata con il nord in alto<br>• CD Sopravvivenza riportata a {base}<br>• turni riportati a 0<br>• ultimi risultati delle prove cancellati<br>• tempo nell'area e viaggio dall'ultimo riposo lungo riportati a 0<br>I membri del gruppo restano nella lista.",
+      "AreaRadius": "Raggio aree",
+      "CrossroadSize": "Dim. bivi",
+      "SizesHint": "Dimensione predefinita delle nuove aree e dei nuovi bivi su questa mappa. Aree e bivi che hanno ancora la vecchia dimensione predefinita seguono il cambio; quelli ridimensionati a mano la mantengono.",
+      "PlayerColor": "Colore del giocatore (il colore della sua freccia)",
+      "AlwaysNorth": "Sa sempre dov'è il nord: la freccia di questo personaggio punta a nord qualunque sia la prova di Sopravvivenza"
+    },
+    "Route": {
+      "Title": "Da che parte?",
+      "Hint": "Più percorsi portano lì. Scegli quello preso dal gruppo:",
+      "Via": "passando per",
+      "WrongWay": "strada sbagliata (si sono persi)"
+    },
+    "Travel": {
+      "AreaTime": "Tempo nell'area",
+      "AreaTimeHint": "Tempo del mondo trascorso dall'inizio dell'esplorazione (primo spostamento, o l'ultimo \"Azzera tutto\").",
+      "SinceRest": "Viaggio dall'ultimo riposo lungo",
+      "ExhaustionLevel": "Livello di indebolimento",
+      "Rest": "Riposo lungo fatto (azzera il viaggio)",
+      "Exhaust": "Aggiungi 1 livello di indebolimento",
+      "RestAll": "Riposo lungo (tutti)",
+      "RestAllConfirm": "Segnare un riposo lungo per tutto il gruppo? I contatori di viaggio tornano a 0.",
+      "ExhaustAll": "Indebolimento (tutti)",
+      "ExhaustAllConfirm": "Dare 1 livello di indebolimento a ogni membro del gruppo?",
+      "AddHour": "+1 ora",
+      "AddRestTime": "+8 ore (riposo lungo). Non azzera i contatori di viaggio: per quello usa i pulsanti del letto.",
+      "AddCustom": "Fai passare del tempo…",
+      "Days": "Giorni",
+      "PassTime": "Fai passare il tempo",
+      "CountAsTravel": "Conta anche come viaggio",
+      "CountAsTravelHint": "Aggiunge questo tempo anche al \"viaggio dall'ultimo riposo lungo\" di ogni membro del gruppo."
+    },
+    "CopyTrack": {
+      "Title": "Copia traccia in altre aree",
+      "Hint": "Aggiungi una copia di <strong>{name}</strong> alle aree selezionate. Ogni copia può avere la sua CD.",
+      "AlreadyHas": "ne ha già una",
+      "Copy": "Copia",
+      "NoAreas": "Non ci sono altre aree su questa mappa.",
+      "Done": "{name} copiata in {n} area/e."
+    },
+    "SceneLink": {
+      "Title": "Attiva scena",
+      "ChooseHint": "<strong>{scene}</strong> ha delle istantanee SnapScene. Ripristinarne una prima di attivarla?",
+      "NoRestore": "Non ripristinare niente",
+      "Activate": "Attiva",
+      "Missing": "WonderMaps: la scena collegata non esiste più.",
+      "RestoreFailed": "WonderMaps: ripristino SnapScene fallito ({error}). La scena non è stata attivata.",
+      "RestoreWarnings": "WonderMaps: l'istantanea è stata ripristinata con {n} problema/i, vedi la console.",
+      "BadgeLabel": "Attiva {scene}",
+      "MenuActivate": "Attiva scena: {scene}"
+    }
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "WONDERMAPS": {
+    "Area": "Area",
+    "Crossroad": "Crossroad",
+    "Path": "Path",
+    "Hidden": "hidden",
+    "Track": "Track",
+    "Save": "Save",
+    "NewArea": "Area {n}",
+    "NewScene": "New WonderMap",
+    "CreateScene": "Create WonderMap",
+    "AreaConfig": "Area",
+    "CrossroadConfig": "Crossroad",
+    "Settings": {
+      "baseSurvivalDC": {
+        "Name": "Starting Survival DC",
+        "Hint": "The Survival DC the journey starts at, and the value the running DC goes back to when the GM resets it."
+      },
+      "survivalDC": {
+        "Name": "Current Survival DC",
+        "Hint": "The running Survival DC. It grows by one after every area activation."
+      },
+      "intelligenceDC": {
+        "Name": "Intelligence DC",
+        "Hint": "DC of the Intelligence check that lets a player remember the visited areas next to the active one."
+      },
+      "survivalFormula": {
+        "Name": "Survival check formula",
+        "Hint": "Roll formula for Survival checks, evaluated with each character's roll data. Missing values count as 0. The default fits D&D 5e."
+      },
+      "intelligenceFormula": {
+        "Name": "Intelligence check formula",
+        "Hint": "Roll formula for Intelligence checks, evaluated with each character's roll data. Missing values count as 0. The default fits D&D 5e."
+      },
+      "randomRotation": {
+        "Name": "Rotate the map",
+        "Hint": "When an area is activated, rotate the whole map by a random angle around it."
+      },
+      "blackoutDuration": {
+        "Name": "Blackout fade (ms)",
+        "Hint": "How long the fade to and from black takes when the active area changes."
+      }
+    },
+    "SceneConfig": {
+      "Enable": "WonderMap scene",
+      "EnableHint": "Turn this scene into a WonderMap: no grid, no token vision, areas connected by paths. The scene background image fills the whole screen as a fixed backdrop."
+    },
+    "Controls": {
+      "Title": "WonderMaps",
+      "Select": "Select: left-click an area to see its full art, right-click it for its menu (walk here, edit...). Click a crossroad to roll its Survival check. Drag to move.",
+      "Area": "Add area: click on the map",
+      "Crossroad": "Add crossroad: click on a path to split it with a crossroad",
+      "Connect": "Connect: drag from an area or crossroad and release on another to draw a path",
+      "SurvivalDC": "Survival DC (current: {dc})",
+      "Reset": "Reset journey",
+      "ResetConfirm": "Clear the active area, the visited areas and the players' arrows on this map? The Survival DC is not changed."
+    },
+    "Menu": {
+      "WalkHere": "Walk here",
+      "SetActive": "Set active (no checks, no rotation)",
+      "EditArea": "Edit area",
+      "AddTrack": "Add track",
+      "MarkVisited": "Mark as visited",
+      "MarkUnvisited": "Mark as not visited",
+      "Delete": "Delete",
+      "RollCrossroad": "Roll Survival check (blind)",
+      "EditCrossroad": "Edit crossroad",
+      "MarkWrong": "Mark as wrong direction",
+      "MarkRight": "Mark as right direction",
+      "RollTrack": "Roll to find this track (blind)",
+      "WalkHereDifficult": "Walk here (difficult terrain)",
+      "TravelTime": "Set travel time",
+      "CopyTrack": "Copy to other areas",
+      "Hide": "Hide from players",
+      "Reveal": "Reveal to players"
+    },
+    "Fields": {
+      "Name": "Name",
+      "Image": "Image",
+      "Radius": "Radius (px)",
+      "Frame": "Frame",
+      "FrameColor": "Frame colour",
+      "FrameWidth": "Frame width (px)",
+      "FrameImage": "Frame image",
+      "FrameImageHint": "Optional. A ring image drawn over the circle instead of the coloured frame.",
+      "RollTable": "Roll table",
+      "RollTableHint": "Rolled blindly every time the party walks into this area. Only the GM sees the result.",
+      "NoTable": "None",
+      "Notes": "GM notes",
+      "Tracks": "Tracks",
+      "TracksHint": "Resources or clues hidden in this area. Only the GM sees them, as small circles at the top-right of the area. Click one on the map to roll for the party to find it.",
+      "TrackName": "Name",
+      "DC": "DC",
+      "Formula": "Check formula (empty = Survival)",
+      "SurvivalDC": "Survival DC",
+      "Size": "Size (px)",
+      "Hours": "Hours",
+      "Minutes": "Minutes",
+      "TravelTimeHint": "How long it takes to walk this path. Walking to an area adds up the paths of the route and advances the world time (doubled on difficult terrain).",
+      "Landmark": "Always visible from next door",
+      "LandmarkHint": "Players see this area (in full colour) whenever the party is in an area connected to it by a path, whatever their checks. The GM sees an eye on its bottom left.",
+      "Hidden": "Hidden from players",
+      "HiddenHint": "Players never see this area as a remembered or always-visible neighbour, until you reveal it (also from its right-click menu). They still see it while the party is in it. The GM sees it faded.",
+      "TrackIcon": "Icon",
+      "LinkedScene": "Linked scene",
+      "NoScene": "None",
+      "LinkedSceneHint": "The GM gets a shortcut on this area (red bullseye, top left) that activates this scene for everybody. With SnapScene active you can first pick a snapshot of it to restore."
+    },
+    "DC": {
+      "Title": "Survival DC",
+      "Current": "Current DC",
+      "Hint": "The DC grows by one after every area activation and carries over between scenes. Reset sets it back to {base} (change the starting value in the module settings).",
+      "Save": "Save",
+      "Reset": "Reset to {base}"
+    },
+    "Chat": {
+      "Arrived": "Arrived at {name}",
+      "Crossroad": "Crossroad: {name}",
+      "Track": "Track: {name} ({area})",
+      "Survival": "Survival",
+      "Intelligence": "Intelligence",
+      "Find": "Find",
+      "DC": "DC",
+      "NoParty": "The party is empty: drag actors onto the WonderMaps party panel.",
+      "NextDC": "Next Survival DC: {dc}",
+      "NoRoute": "No path leads here: no time passed.",
+      "Branch": "Branch {n}",
+      "TravelTime": "Travel time: {time}",
+      "Difficult": "difficult terrain (×2)",
+      "Rolled": "Rolled",
+      "NoResult": "No result."
+    },
+    "Notify": {
+      "PathExists": "Those two points are already connected.",
+      "CrossroadOnPath": "Crossroads go on paths: click on a path to place one.",
+      "PathEnds": "A path must end on an area or a crossroad: release the mouse over one.",
+      "CascadeConfirm": "This deletes {paths} path(s) and {crossroads} crossroad(s) connected to it. Areas are kept. Continue?"
+    },
+    "Errors": {
+      "BadFormula": "WonderMaps: invalid roll formula \"{formula}\". Rolled a plain d20 instead.",
+      "NoTable": "WonderMaps: roll table {uuid} not found.",
+      "NoExhaustion": "WonderMaps: {name} has no exhaustion value (system.attributes.exhaustion) in this game system."
+    },
+    "Panel": {
+      "Title": "Party",
+      "Toggle": "Show / hide",
+      "Turns": "Turns (area changes)",
+      "Remove": "Remove from party",
+      "RemoveConfirm": "Remove <strong>{name}</strong> from the party? Checks will no longer be rolled for them.",
+      "Empty": "Drag actors (or a folder of actors) here from the Actors tab. Checks are rolled only for the actors in this list.",
+      "SurvivalDC": "Survival DC",
+      "IntelligenceDC": "INT DC",
+      "ResetTurns": "Reset turns",
+      "ResetTurnsConfirm": "Set the turn counter back to 0?",
+      "NoRoll": "not rolled yet",
+      "Passed": "passed",
+      "Failed": "failed",
+      "OnlyActors": "WonderMaps: only world actors can join the party.",
+      "ResetRotation": "Reset rotation",
+      "ResetRotationConfirm": "Turn the map back so that north points up? The screen blacks out as usual. Players' arrows keep their angle from north.",
+      "ResetAll": "Reset everything",
+      "ResetAllConfirm": "Reset everything on this map?<br>• active area, visited areas and players' arrows cleared<br>• rotation back to north up<br>• Survival DC back to {base}<br>• turns back to 0<br>• last check results cleared<br>• time in the area and travel since long rest back to 0<br>The party members stay in the list.",
+      "AreaRadius": "Area radius",
+      "CrossroadSize": "Crossroad size",
+      "SizesHint": "Default size of new areas and crossroads on this map. Areas and crossroads that still have the old default size follow the change; the ones you resized keep their size.",
+      "PlayerColor": "Player colour (the colour of their arrow)",
+      "AlwaysNorth": "Always knows north: this character's arrow points north whatever their Survival check"
+    },
+    "Route": {
+      "Title": "Which way?",
+      "Hint": "Several routes lead there. Pick the one the party took:",
+      "Via": "via",
+      "WrongWay": "wrong way (got lost)"
+    },
+    "Travel": {
+      "AreaTime": "Time in the area",
+      "AreaTimeHint": "World time passed since the exploration started (first move, or the last \"Reset everything\").",
+      "SinceRest": "Travelled since the last long rest",
+      "ExhaustionLevel": "Exhaustion level",
+      "Rest": "Long rest taken (reset travel)",
+      "Exhaust": "Add 1 level of exhaustion",
+      "RestAll": "Long rest (all)",
+      "RestAllConfirm": "Mark a long rest as taken for the whole party? Their travel counters go back to 0.",
+      "ExhaustAll": "Exhaustion (all)",
+      "ExhaustAllConfirm": "Give 1 level of exhaustion to every party member?",
+      "AddHour": "+1 hour",
+      "AddRestTime": "+8 hours (long rest). Does not reset the travel counters: use the bed buttons for that.",
+      "AddCustom": "Let time pass…",
+      "Days": "Days",
+      "PassTime": "Let time pass",
+      "CountAsTravel": "Also count as travel",
+      "CountAsTravelHint": "Adds this time to every party member's \"travelled since the last long rest\" too."
+    },
+    "CopyTrack": {
+      "Title": "Copy track to other areas",
+      "Hint": "Add a copy of <strong>{name}</strong> to the areas you tick. Each copy can have its own DC.",
+      "AlreadyHas": "already has one",
+      "Copy": "Copy",
+      "NoAreas": "There are no other areas on this map.",
+      "Done": "{name} copied to {n} area(s)."
+    },
+    "SceneLink": {
+      "Title": "Activate scene",
+      "ChooseHint": "<strong>{scene}</strong> has SnapScene snapshots. Restore one before activating it?",
+      "NoRestore": "Don't restore anything",
+      "Activate": "Activate",
+      "Missing": "WonderMaps: the linked scene no longer exists.",
+      "RestoreFailed": "WonderMaps: SnapScene restore failed ({error}). The scene was not activated.",
+      "RestoreWarnings": "WonderMaps: the snapshot was restored with {n} problem(s), see the console.",
+      "BadgeLabel": "Activate {scene}",
+      "MenuActivate": "Activate scene: {scene}"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+<section id="wondermaps-party" class="wondermaps-party{{#if collapsed}} collapsed{{/if}}">
+  <header class="panel-header">
+    <i class="fas fa-compass"></i>
+    <h3>{{localize "WONDERMAPS.Panel.Title"}}</h3>
+    <span class="turns-badge" data-tooltip="{{localize 'WONDERMAPS.Panel.Turns'}}">
+      <i class="fas fa-shoe-prints"></i> {{turns}}
+    </span>
+    <a class="toggle" data-action="toggle" data-tooltip="{{localize 'WONDERMAPS.Panel.Toggle'}}">
+      <i class="fas {{#if collapsed}}fa-chevron-down{{else}}fa-chevron-up{{/if}}"></i>
+    </a>
+  </header>
+
+  <div class="panel-body">
+    <ol class="members">
+      {{#each members}}
+      <li class="member" data-actor-id="{{id}}">
+        <span class="colors" data-tooltip="{{localize 'WONDERMAPS.Panel.PlayerColor'}}">{{#each colors}}<span style="background: {{this}}"></span>{{/each}}</span>
+        <img src="{{img}}" alt="">
+        <div class="who">
+          <span class="name">{{name}}</span>
+          {{#if owners}}<small>{{owners}}</small>{{/if}}
+        </div>
+        <a class="north{{#if alwaysNorth}} active{{/if}}" data-action="north" data-tooltip="{{localize 'WONDERMAPS.Panel.AlwaysNorth'}}">
+          <i class="fas fa-compass"></i>
+        </a>
+        <span class="result {{survival.cls}}" data-tooltip="{{survival.tooltip}}">
+          <i class="fas fa-tree"></i> {{survival.text}}
+        </span>
+        <span class="result {{intelligence.cls}}" data-tooltip="{{intelligence.tooltip}}">
+          <i class="fas fa-brain"></i> {{intelligence.text}}
+        </span>
+        <a class="remove" data-action="remove" data-tooltip="{{localize 'WONDERMAPS.Panel.Remove'}}">
+          <i class="fas fa-xmark"></i>
+        </a>
+      </li>
+      {{else}}
+      <li class="empty">{{localize "WONDERMAPS.Panel.Empty"}}</li>
+      {{/each}}
+    </ol>
+
+    <div class="controls">
+      <div class="control-row">
+        <label>{{localize "WONDERMAPS.Panel.SurvivalDC"}}</label>
+        <a data-action="survival-down"><i class="fas fa-minus"></i></a>
+        <input type="number" name="survivalDC" value="{{survivalDC}}" step="1">
+        <a data-action="survival-up"><i class="fas fa-plus"></i></a>
+        <a data-action="survival-reset" data-tooltip="{{survivalResetTooltip}}"><i class="fas fa-rotate-left"></i></a>
+      </div>
+      <div class="control-row">
+        <label>{{localize "WONDERMAPS.Panel.IntelligenceDC"}}</label>
+        <a data-action="int-down"><i class="fas fa-minus"></i></a>
+        <input type="number" name="intelligenceDC" value="{{intelligenceDC}}" step="1">
+        <a data-action="int-up"><i class="fas fa-plus"></i></a>
+        <span class="spacer"></span>
+      </div>
+      <div class="control-row">
+        <label>{{localize "WONDERMAPS.Panel.Turns"}}</label>
+        <span class="spacer"></span>
+        <span class="value">{{turns}}</span>
+        <span class="spacer"></span>
+        <a data-action="turns-reset" data-tooltip="{{localize 'WONDERMAPS.Panel.ResetTurns'}}"><i class="fas fa-rotate-left"></i></a>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="control-row sizes">
+        <label data-tooltip="{{localize 'WONDERMAPS.Panel.SizesHint'}}">{{localize "WONDERMAPS.Panel.AreaRadius"}}</label>
+        <input type="number" name="areaRadius" value="{{defaults.areaRadius}}" min="20" step="5">
+        <label data-tooltip="{{localize 'WONDERMAPS.Panel.SizesHint'}}">{{localize "WONDERMAPS.Panel.CrossroadSize"}}</label>
+        <input type="number" name="crossroadSize" value="{{defaults.crossroadSize}}" min="10" step="2">
+      </div>
+    </div>
+
+    <div class="reset-buttons">
+      <button type="button" data-action="reset-rotation">
+        <i class="fas fa-compass"></i> {{localize "WONDERMAPS.Panel.ResetRotation"}}
+      </button>
+      <button type="button" data-action="reset-all" class="danger">
+        <i class="fas fa-arrows-rotate"></i> {{localize "WONDERMAPS.Panel.ResetAll"}}
+      </button>
+    </div>
+  </div>
+</section>
