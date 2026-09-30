@@ -31,9 +31,9 @@
       "path": "lang/it.json"
     }
   ],
-  "url": "",
-  "manifest": "",
-  "download": "",
+  "url": "https://github.com/WonderVTT/WonderMaps",
+  "manifest": "https://github.com/WonderVTT/WonderMaps/releases/latest/download/module.json",
+  "download": "https://github.com/WonderVTT/WonderMaps/releases/download/v1.0.0/module.zip",
   "socket": true,
   "relationships": {
     "recommends": [
