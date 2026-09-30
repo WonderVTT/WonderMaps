@@ -2,7 +2,7 @@
   "id": "wondermaps",
   "title": "WonderMaps",
   "description": "A gridless exploration scene type for Foundry VTT v12. Build a map of circular areas linked by paths and forking crossroads. When the GM walks the party to a new area the map goes dark, rotates, and every player gets a compass arrow based on a blind Survival check. A blind Intelligence check decides whether they remember the adjacent areas they already visited. Areas can carry roll tables and hidden tracks with DCs.",
-  "version": "1.0.0",
+  "version": ".0.1",
   "compatibility": {
     "minimum": "12",
     "verified": "12.331",
@@ -33,7 +33,7 @@
   ],
   "url": "https://github.com/WonderVTT/WonderMaps",
   "manifest": "https://github.com/WonderVTT/WonderMaps/releases/latest/download/module.json",
-  "download": "https://github.com/WonderVTT/WonderMaps/releases/download/v1.0.0/module.zip",
+  "download": "https://github.com/WonderVTT/WonderMaps/releases/download/v.0.1/module.zip",
   "socket": true,
   "relationships": {
     "recommends": [
